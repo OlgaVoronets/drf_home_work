@@ -12,10 +12,15 @@ class CourseSerializer(serializers.ModelSerializer):
 
 class CourseDetailSerializer(serializers.ModelSerializer):
     lessons_count = SerializerMethodField()
+    lessons_list = SerializerMethodField()
 
     @staticmethod
-    def get_lessons_count(self, course):
+    def get_lessons_count(course):
         return Lesson.objects.filter(course=course).count()
+
+    @staticmethod
+    def get_lessons_list(course):
+        return LessonSerializer(Lesson.objects.filter(course=course), many=True).data
 
     class Meta:
         model = Course
