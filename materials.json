@@ -1,0 +1,75 @@
+[
+  {
+    "model": "materials.course",
+    "pk": 1,
+    "fields": {
+      "name": "Django",
+      "preview": "",
+      "description": "Django — одного из самых популярных фреймворков для веб-разработки на Python."
+    }
+  },
+  {
+    "model": "materials.course",
+    "pk": 2,
+    "fields": {
+      "name": "DRF",
+      "preview": "",
+      "description": "Django REST framework (DRF) для разработки мощных и масштабируемых RESTful API."
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 1,
+    "fields": {
+      "name": "Знакомство с Django",
+      "preview": "",
+      "description": "Рассмотрим преимущества фреймворка Django.",
+      "url": null,
+      "course": 1
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 2,
+    "fields": {
+      "name": "Основы веба",
+      "preview": "",
+      "description": "Основы веб-разработки на Django",
+      "url": null,
+      "course": 1
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 3,
+    "fields": {
+      "name": "Работа с ORM",
+      "preview": "",
+      "description": "Познакомимся с Django ORM.",
+      "url": null,
+      "course": 1
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 4,
+    "fields": {
+      "name": "Вьюсеты и дженерики",
+      "preview": "",
+      "description": "Познакомимся с архитектурой REST, Начнем работать с Django REST framework (DRF)",
+      "url": null,
+      "course": 2
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 5,
+    "fields": {
+      "name": "Сериализаторы",
+      "preview": "",
+      "description": "Познакомитесь с возможностью расширения полей. Научитесь множественному выводу. Разберетесь, как устроена фильтрация.",
+      "url": null,
+      "course": 2
+    }
+  }
+]
