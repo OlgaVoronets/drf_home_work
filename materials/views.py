@@ -12,6 +12,8 @@ class CourseViewSet(viewsets.ModelViewSet):
     }
 
     def get_serializer_class(self):
+        """определяем сериализатор с учетом запрашиваемого действия(self.action = list, retrieve, create, update,
+        delete). Если действие не указано в словарике serializers_choice - используется default_serializer"""
         return self.serializers_choice.get(self.action, self.default_serializer)
 
 
