@@ -32,8 +32,8 @@ class Payment(models.Model):
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING, verbose_name='Пользователь',
                              **NULLABLE)
-    course = models.ForeignKey(Course, on_delete=models.DO_NOTHING, related_name='paid_course', **NULLABLE)
-    lesson = models.ForeignKey(Lesson, on_delete=models.DO_NOTHING, related_name='paid_lesson', **NULLABLE)
+    course = models.ForeignKey(Course, on_delete=models.DO_NOTHING, related_name='paid', **NULLABLE)
+    lesson = models.ForeignKey(Lesson, on_delete=models.DO_NOTHING, related_name='paid', **NULLABLE)
 
     def __str__(self):
         return f'{self.course if self.course and not self.lesson else self.lesson}, оплачено {self.payment_amount} руб'
@@ -41,3 +41,5 @@ class Payment(models.Model):
     class Meta:
         verbose_name = 'Платеж'
         verbose_name_plural = 'Платежи'
+        ordering = ('-payment_date',)
+

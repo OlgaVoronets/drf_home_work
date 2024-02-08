@@ -1,16 +1,17 @@
-# from django.urls import path, include
-# from rest_framework import routers
+from django.urls import path
 
-# from users.views import UserUpdateView
+from materials.apps import MaterialsConfig
+from rest_framework.routers import DefaultRouter
 
-# from users.views import UserViewSet
+from users.apps import UsersConfig
+from users.views import UserViewSet, PaymentListView
 
+app_name = UsersConfig.name
 
-# router = routers.DefaultRouter()
-# router.register(r'users', UserViewSet)
-#
-# urlpatterns = [
-#     path('user/update/', UserUpdateView.as_view()),
-# ]
+router = DefaultRouter()
+router.register(r'user', UserViewSet, basename='user')
 
-# urlpatterns += router.urls
+urlpatterns = [
+                  path('payment/', PaymentListView.as_view(), name='payment_list'),
+
+              ] + router.urls
