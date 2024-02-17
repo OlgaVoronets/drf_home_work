@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('materials', '0001_initial'),
         ('users', '0004_alter_payment_options_alter_payment_payment_date'),
@@ -16,16 +15,20 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='payment',
             name='course',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, related_name='paid', to='materials.course'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING,
+                                    related_name='paid', to='materials.course'),
         ),
         migrations.AlterField(
             model_name='payment',
             name='lesson',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, related_name='paid', to='materials.lesson'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING,
+                                    related_name='paid', to='materials.lesson'),
         ),
         migrations.AlterField(
             model_name='payment',
             name='payment_date',
-            field=models.DateTimeField(default=datetime.datetime(2024, 2, 8, 12, 51, 36, 71165, tzinfo=datetime.timezone.utc), verbose_name='Дата платежа'),
+            field=models.DateTimeField(
+                default=datetime.datetime(2024, 2, 8, 12, 51, 36, 71165, tzinfo=datetime.timezone.utc),
+                verbose_name='Дата платежа'),
         ),
     ]
