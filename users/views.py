@@ -12,6 +12,8 @@ class UserCreateView(generics.CreateAPIView):
     serializer_class = UserSerializer
 
     def create(self, request, *args, **kwargs):
+        """Переопределение метода для сохранения хешированного пароля в бд (если пароль не хешируется -
+        пользователь не считается активным и токен авторизации не создается)"""
         serializer = UserSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
@@ -49,6 +51,8 @@ class UserListView(generics.ListAPIView):
 
 
 class PaymentListView(generics.ListAPIView):
+    """Просмотр списка платежей с фильтрацией по курсу, уроку и способу оплаты,
+    и с сортировкой по дате(по умолчанию в модели сортировка по убыванию, при запросе можно изменить с помощью -)"""
     serializer_class = PaymentSerializer
     queryset = Payment.objects.all()
     filter_backends = [DjangoFilterBackend, OrderingFilter]

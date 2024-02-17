@@ -20,6 +20,7 @@ class CourseViewSet(viewsets.ModelViewSet):
         return self.serializers_choice.get(self.action, self.default_serializer)
 
     def get_permissions(self):
+        """Определяем права доступа с учетом запрашиваемого действия"""
         if self.action == 'create':
             self.permission_classes = [IsAuthenticated, not IsModerator]
         elif self.action in ['list', 'retrieve', 'update']:
@@ -29,6 +30,7 @@ class CourseViewSet(viewsets.ModelViewSet):
         return [permission() for permission in self.permission_classes]
 
     def perform_create(self, serializer):
+        """Привязываем текущего пользователя к создаваемому объекту"""
         new_course = serializer.save()
         new_course.owner = self.request.user
         new_course.save()
@@ -39,6 +41,7 @@ class LessonCreateView(generics.CreateAPIView):
     permission_classes = [IsAuthenticated, not IsModerator]
 
     def perform_create(self, serializer):
+        """Привязываем текущего пользователя к создаваемому объекту"""
         new_lesson = serializer.save()
         new_lesson.owner = self.request.user
         new_lesson.save()

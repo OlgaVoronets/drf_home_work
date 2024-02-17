@@ -27,7 +27,7 @@ class Lesson(models.Model):
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Владелец', **NULLABLE)
 
     def __str__(self):
-        return f'Урок {self.name}, курс {self.course}'
+        return f'Урок {self.name} из курса {self.course}'
 
     class Meta:
         verbose_name = 'Урок'
