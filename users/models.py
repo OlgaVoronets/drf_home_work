@@ -7,7 +7,14 @@ from materials.models import Course, Lesson
 from services import NULLABLE
 
 
+class UserRoles(models.TextChoices):
+    MEMBER = 'member'
+    MODERATOR = 'moderator'
+
+
 class User(AbstractUser):
+    role = models.CharField(max_length=15, verbose_name='роль', choices=UserRoles.choices, default=UserRoles.MEMBER)
+
     username = None
     email = models.EmailField(unique=True, verbose_name='Почта')
 
