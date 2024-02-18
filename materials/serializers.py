@@ -5,12 +5,24 @@ from materials.models import Course, Lesson
 
 
 class CourseSerializer(serializers.ModelSerializer):
+    """Базовый сериализатор для модели курса"""
+
     class Meta:
         model = Course
         fields = '__all__'
 
 
+class LessonSerializer(serializers.ModelSerializer):
+    """Базовый сериализатор для модели урока"""
+
+    class Meta:
+        model = Lesson
+        fields = '__all__'
+
+
 class CourseDetailSerializer(serializers.ModelSerializer):
+    """Сериализатор просмотра информации о курсе, включает в себя поля количества уроков и
+    списка уроков этого курса"""
     lessons_count = SerializerMethodField()
     lessons_list = SerializerMethodField()
 
@@ -24,10 +36,4 @@ class CourseDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Course
-        fields = '__all__'
-
-
-class LessonSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Lesson
         fields = '__all__'

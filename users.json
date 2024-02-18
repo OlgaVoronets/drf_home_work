@@ -4,14 +4,36 @@
     "pk": 1,
     "fields": {
       "password": "pbkdf2_sha256$720000$DwmL2IgVtbjqqtupQKzZyY$S9WD+E4JWejYIyZsONu3r1un6lGxIso/BoyTXIm/e+U=",
-      "last_login": "2024-02-08T09:49:55.350Z",
+      "last_login": "2024-02-14T15:26:37Z",
       "is_superuser": true,
       "first_name": "Admin",
       "last_name": "SkyPro",
       "is_staff": true,
       "is_active": true,
-      "date_joined": "2024-02-08T09:49:13.202Z",
+      "date_joined": "2024-02-08T09:49:13Z",
       "email": "admin@sky.pro",
+      "city": null,
+      "phone": null,
+      "avatar": "",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 7,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$0is3REJ6fLqvHPXsupprpB$PJHpO8svfCW9mdumS/0maNWMP6UFsD79awdOTA6nBlM=",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-02-17T11:18:38.038Z",
+      "email": "test3@test.ru",
       "city": null,
       "phone": null,
       "avatar": "",
@@ -20,15 +42,25 @@
     }
   },
   {
-    "model": "users.payment",
-    "pk": 1,
+    "model": "users.user",
+    "pk": 9,
     "fields": {
-      "payment_date": "2024-02-08T11:22:36Z",
-      "payment_amount": 5000.0,
-      "payment_method": "cash",
-      "user": 1,
-      "course": 1,
-      "lesson": 2
+      "password": "pbkdf2_sha256$720000$ls7aUp0wo4N3z7Hn2H6xz6$U4xzrgnJG4DSSG3kkuo49+lQoFTW4pVqFmYsJ3Y0WXE=",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-02-17T12:45:29.476Z",
+      "email": "moderator@test.ru",
+      "city": null,
+      "phone": null,
+      "avatar": "",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
     }
   },
   {
@@ -41,6 +73,18 @@
       "user": 1,
       "course": null,
       "lesson": 1
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 3,
+    "fields": {
+      "payment_date": "2024-02-08T12:51:35Z",
+      "payment_amount": 20000.0,
+      "payment_method": "transfer",
+      "user": 1,
+      "course": 2,
+      "lesson": null
     }
   }
 ]

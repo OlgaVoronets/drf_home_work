@@ -5,7 +5,8 @@
     "fields": {
       "name": "Django",
       "preview": "",
-      "description": "Django — одного из самых популярных фреймворков для веб-разработки на Python."
+      "description": "Django — один из самых популярных фреймворков для веб-разработки на Python.",
+      "owner": 7
     }
   },
   {
@@ -14,7 +15,8 @@
     "fields": {
       "name": "DRF",
       "preview": "",
-      "description": "Django REST framework (DRF) для разработки мощных и масштабируемых RESTful API."
+      "description": "Django REST framework (DRF) для разработки мощных и масштабируемых RESTful API.",
+      "owner": 7
     }
   },
   {
@@ -25,7 +27,8 @@
       "preview": "",
       "description": "Рассмотрим преимущества фреймворка Django.",
       "url": null,
-      "course": 1
+      "course": 1,
+      "owner": 7
     }
   },
   {
@@ -36,7 +39,8 @@
       "preview": "",
       "description": "Основы веб-разработки на Django",
       "url": null,
-      "course": 1
+      "course": 1,
+      "owner": null
     }
   },
   {
@@ -47,7 +51,8 @@
       "preview": "",
       "description": "Познакомимся с Django ORM.",
       "url": null,
-      "course": 1
+      "course": 1,
+      "owner": null
     }
   },
   {
@@ -58,7 +63,8 @@
       "preview": "",
       "description": "Познакомимся с архитектурой REST, Начнем работать с Django REST framework (DRF)",
       "url": null,
-      "course": 2
+      "course": 2,
+      "owner": null
     }
   },
   {
@@ -69,7 +75,32 @@
       "preview": "",
       "description": "Познакомитесь с возможностью расширения полей. Научитесь множественному выводу. Разберетесь, как устроена фильтрация.",
       "url": null,
-      "course": 2
+      "course": 2,
+      "owner": null
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 6,
+    "fields": {
+      "name": "Права доступа в DRF",
+      "preview": "",
+      "description": "Вы будете учиться создавать безопасные и гибкие веб-приложения с использованием DRF.",
+      "url": null,
+      "course": 2,
+      "owner": 1
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 7,
+    "fields": {
+      "name": "Права доступа в DRF",
+      "preview": "",
+      "description": "Вы будете учиться создавать безопасные и гибкие веб-приложения с использованием DRF.",
+      "url": null,
+      "course": 2,
+      "owner": 1
     }
   }
 ]
