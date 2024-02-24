@@ -4,6 +4,8 @@ from rest_framework.relations import SlugRelatedField
 
 from materials.models import Course, Lesson
 from materials.validators import url_validator
+from users.models import Subscription
+from users.serializers import SubscriptionSerializer
 
 
 class CourseSerializer(serializers.ModelSerializer):
@@ -28,6 +30,10 @@ class CourseDetailSerializer(serializers.ModelSerializer):
     списка уроков этого курса"""
     lessons_count = SerializerMethodField()
     lessons_list = SerializerMethodField()
+    is_subscribed = SerializerMethodField()
+
+    def get_is_subscribed(self, course):
+        return Subscription.objects.filter(course=course, user=user).exists()
 
     @staticmethod
     def get_lessons_count(course):
