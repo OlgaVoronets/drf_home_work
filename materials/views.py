@@ -2,7 +2,7 @@ from rest_framework import viewsets, generics
 from rest_framework.permissions import IsAuthenticated
 
 from materials.models import Course, Lesson
-from materials.serializers import CourseSerializer, LessonSerializer, CourseDetailSerializer
+from materials.serializers import CourseSerializer, LessonSerializer, CourseDetailSerializer, LessonDetailSerializer
 from users.permissions import IsModerator, IsOwner
 
 
@@ -53,7 +53,7 @@ class LessonListView(generics.ListAPIView):
 
 
 class LessonRetrieveView(generics.RetrieveAPIView):
-    serializer_class = LessonSerializer
+    serializer_class = LessonDetailSerializer
     queryset = Lesson.objects.all()
     permission_classes = [IsModerator | IsOwner]
 

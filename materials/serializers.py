@@ -1,7 +1,9 @@
 from rest_framework import serializers
 from rest_framework.fields import SerializerMethodField
+from rest_framework.relations import SlugRelatedField
 
 from materials.models import Course, Lesson
+from materials.validators import url_validator
 
 
 class CourseSerializer(serializers.ModelSerializer):
@@ -14,6 +16,7 @@ class CourseSerializer(serializers.ModelSerializer):
 
 class LessonSerializer(serializers.ModelSerializer):
     """Базовый сериализатор для модели урока"""
+    url = serializers.URLField(validators=[url_validator])
 
     class Meta:
         model = Lesson
@@ -36,4 +39,13 @@ class CourseDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Course
+        fields = '__all__'
+
+
+class LessonDetailSerializer(serializers.ModelSerializer):
+    """Cериализатор для просмотра информации об уроке, где для курса выводится его наименование"""
+    course = SlugRelatedField(slug_field='name', queryset=Course.objects.all())
+
+    class Meta:
+        model = Lesson
         fields = '__all__'
