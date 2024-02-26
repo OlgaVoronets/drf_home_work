@@ -24,8 +24,9 @@ class LessonSerializer(serializers.ModelSerializer):
 
 
 class CourseDetailSerializer(serializers.ModelSerializer):
-    """Сериализатор просмотра информации о курсе, включает в себя поля количества уроков,
-    списка уроков этого курса и признак подписки текущего пользователя на этот курс (bool)"""
+    """Сериализатор просмотра информации о курсе, включает в себя
+       поля количества уроков, списка уроков этого курса и признак
+       подписки текущего пользователя на этот курс (bool)"""
     lessons_count = SerializerMethodField()
     lessons_list = SerializerMethodField()
     is_subscribed = SerializerMethodField()
@@ -38,7 +39,8 @@ class CourseDetailSerializer(serializers.ModelSerializer):
         return None
 
     def get_is_subscribed(self, course):
-        """Проверяем, есть ли в наборе подписок курса объект с текущим пользователем"""
+        """Проверяем, есть ли в наборе подписок курса объект
+           с текущим пользователем"""
         return course.subscription_set.filter(user=self.user_()).exists()
 
     @staticmethod
@@ -49,7 +51,8 @@ class CourseDetailSerializer(serializers.ModelSerializer):
     @staticmethod
     def get_lessons_list(course):
         """Получаем список уроков для данного курса"""
-        return LessonSerializer(Lesson.objects.filter(course=course), many=True).data
+        return LessonSerializer(Lesson.objects.filter(course=course),
+                                many=True).data
 
     class Meta:
         model = Course
@@ -57,7 +60,8 @@ class CourseDetailSerializer(serializers.ModelSerializer):
 
 
 class LessonDetailSerializer(serializers.ModelSerializer):
-    """Cериализатор для просмотра информации об уроке, где для курса выводится его наименование"""
+    """Cериализатор для просмотра информации об уроке,
+       где для курса выводится его наименование"""
     course = SlugRelatedField(slug_field='name', queryset=Course.objects.all())
 
     class Meta:

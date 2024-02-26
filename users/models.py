@@ -13,7 +13,8 @@ class UserRoles(models.TextChoices):
 
 
 class User(AbstractUser):
-    role = models.CharField(max_length=15, verbose_name='роль', choices=UserRoles.choices, default=UserRoles.MEMBER)
+    role = models.CharField(max_length=15, verbose_name='роль',
+                            choices=UserRoles.choices, default=UserRoles.MEMBER)
 
     username = None
     email = models.EmailField(unique=True, verbose_name='Почта')
@@ -54,7 +55,8 @@ class Payment(models.Model):
 
 
 class Subscription(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь', related_name='user')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь',
+                             related_name='user')
     course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name='Курс')
 
     def __str__(self):
