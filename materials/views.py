@@ -1,4 +1,5 @@
 from rest_framework import viewsets, generics
+from rest_framework.permissions import AllowAny
 
 from materials.models import Course, Lesson
 from materials.paginators import MaterialsPaginator
@@ -22,11 +23,11 @@ class CourseViewSet(viewsets.ModelViewSet):
     def get_permissions(self):
         """Определяем права доступа с учетом запрашиваемого действия"""
         if self.action == 'create':
-            self.permission_classes = [~IsModerator]
+            self.permission_classes = [AllowAny]  # [~IsModerator]
         elif self.action in ['list', 'retrieve', 'update']:
-            self.permission_classes = [IsModerator | IsOwner]
+            self.permission_classes = [AllowAny]  # [IsModerator | IsOwner]
         elif self.action == 'destroy':
-            self.permission_classes = [IsOwner]  # если владелец является модератором ????
+            self.permission_classes = [AllowAny]  #  [IsOwner]  # если владелец является модератором ????
         return [permission() for permission in self.permission_classes]
 
     def perform_create(self, serializer):
@@ -38,7 +39,7 @@ class CourseViewSet(viewsets.ModelViewSet):
 
 class LessonCreateView(generics.CreateAPIView):
     serializer_class = LessonSerializer
-    permission_classes = [~IsModerator]
+    permission_classes = [AllowAny]  # [~IsModerator]
 
     def perform_create(self, serializer):
         """Привязываем текущего пользователя к создаваемому объекту"""
@@ -50,22 +51,22 @@ class LessonCreateView(generics.CreateAPIView):
 class LessonListView(generics.ListAPIView):
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
-    permission_classes = [IsModerator | IsOwner]
+    permission_classes = [AllowAny]  # [IsModerator | IsOwner]
     pagination_class = MaterialsPaginator
 
 
 class LessonRetrieveView(generics.RetrieveAPIView):
     serializer_class = LessonDetailSerializer
     queryset = Lesson.objects.all()
-    permission_classes = [IsModerator | IsOwner]
+    permission_classes = [AllowAny]  # [IsModerator | IsOwner]
 
 
 class LessonUpdateView(generics.UpdateAPIView):
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
-    permission_classes = [IsModerator | IsOwner]
+    permission_classes = [AllowAny]  # [IsModerator | IsOwner]
 
 
 class LessonDestroyView(generics.DestroyAPIView):
     queryset = Lesson.objects.all()
-    permission_classes = [IsOwner]
+    permission_classes = [AllowAny]  # [IsOwner]
