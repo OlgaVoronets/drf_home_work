@@ -35,7 +35,7 @@ class Payment(models.Model):
         ('transfer', 'Безналичная оплата'),
     ]
     payment_date = models.DateTimeField(verbose_name='Дата платежа', default=timezone.now())
-    payment_amount = models.FloatField(verbose_name='Сумма платежа')
+    payment_amount = models.FloatField(verbose_name='Сумма платежа', **NULLABLE)
     payment_method = models.CharField(max_length=20, verbose_name='Способ платежа', choices=PAYMENT_CHOICES,
                                       default='cash')
     payment_status = models.CharField(default='unpaid', verbose_name='Статус оплаты')

@@ -70,16 +70,18 @@ class PaymentListView(generics.ListAPIView):
 
 
 class PaymentCreateView(generics.CreateAPIView):
+    """Создание платежа"""
     serializer_class = PaymentCreateSerializer
     permission_classes = [AllowAny]
 
     def perform_create(self, serializer):
-        new_payment = serializer.save()
         stripe.api_key = settings.STRIPE_API_KEY
         response = get_session()
+        new_payment = serializer.save()
         new_payment.session_id = response['id']
         new_payment.payment_url = response['url']
-
+        new_payment.payment_status = response['payment_status']
+        new_payment.payment_amount = response['amount_total']
         new_payment.save()
         return super().perform_create(serializer)
 
