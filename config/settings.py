@@ -170,6 +170,7 @@ REST_FRAMEWORK = {
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=120),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'UPDATE_LAST_LOGIN': True,  # Этот параметр сохраняет в базу время последней авторизации! Важно!
 }
 
 STRIPE_API_KEY = os.getenv('STRIPE_API_KEY')
