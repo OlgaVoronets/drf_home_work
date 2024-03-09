@@ -1,6 +1,7 @@
 import stripe
-from config import settings
+
 import requests
+from django.conf import settings
 
 stripe.api_key = settings.STRIPE_API_KEY
 
@@ -27,15 +28,14 @@ def get_session():
 class MyBot:
     """Класс для работы с уведомлениями в телеграм"""
 
-    URL = 'https://api.telegram.org/bot'
-    TOKEN = settings.TELEGRAM_TOKEN
+    URL = f'https://api.telegram.org/bot{settings.TELEGRAM_TOKEN}'
 
-    def send_message(self, text):
-        path = f'{self.URL}{self.TOKEN}/sendMessage'
+    def send_message(self, chat_id, text):
+        path = f'{self.URL}/sendMessage'
         requests.post(
             url=path,
             data={
-                'chat_id': '228757282',
+                'chat_id': chat_id,
                 'text': text
             }
         )
