@@ -92,8 +92,8 @@ DATABASES = {
         'NAME': os.getenv('POSTGRES_DB'),
         'USER': os.getenv('POSTGRES_USER'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-        'HOST': 'db',
-        'PORT': os.getenv('DATABASE_PORT')
+        'HOST': os.getenv('POSTGRES_HOST'),
+        'PORT': os.getenv('POSTGRES_PORT')
     }
 }
 
@@ -181,10 +181,10 @@ TELEGRAM_USER_ID = os.getenv('TELEGRAM_USER_ID')
 # Настройки для Celery
 
 # URL-адрес брокера сообщений Redis (по умолчанию порт 6379)
-CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
 
 # URL-адрес брокера результатов, также Redis
-CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+CELERY_RESULT_BACKEND = os.getenv('CELERY_BROKER_URL')
 
 # Часовой пояс для работы Celery
 CELERY_TIMEZONE = TIME_ZONE

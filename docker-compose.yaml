@@ -36,7 +36,7 @@ services:
       redis:
         condition: service_healthy
     tty: true
-    command: python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000
+    command: python manage.py migrate && python manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
     volumes:
@@ -62,7 +62,7 @@ services:
       db:
         condition: service_healthy
     tty: true
-    command: python manage.py makemigrations && python manage.py migrate && celery -A config beat -l INFO
+    command: python manage.py migrate && celery -A config beat -l INFO
     volumes:
       - .:/lms_app
 
