@@ -35,10 +35,21 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+      migration:
+        condition: service_completed_successfully
     tty: true
-    command: python manage.py migrate && python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
+    volumes:
+      - .:/lms_app
+
+
+  migration:
+    build: .
+    command: python manage.py makemigrations && python manage.py migrate
+    depends_on:
+      - db
     volumes:
       - .:/lms_app
 
